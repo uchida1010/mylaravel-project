@@ -8,7 +8,7 @@ class ScrapingShowController extends Controller
 {
     public function show()
     {
-        $message = 'これがスクレイピング画面です';
+        $message = '競合調査';
         return view('scraping.show', compact('message'));
     }
 }
