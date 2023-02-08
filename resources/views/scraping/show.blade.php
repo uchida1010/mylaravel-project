@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-<html. lang="ja">
+<html. lang='ja'>
 
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset='UTF-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <title>Document</title>
-        <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+        <link rel='stylesheet' href='{{ asset('/css/style.css') }}'>
     </head>
 
     <body>
         <h2>
             {{ $message }}
         </h2>
-        <form action="#" method="post">
+        <form action='#' method='post'>
             <table>
                 <tr>
                     <td>
                         カテゴリ
                     </td>
                     <td>
-                        <select name="category" class="category">
-                            <option value="plastic_pallet">プラスチックパレット</option>
-                            <option value="wood_pallet">木製パレット</option>
+                        @php
+                        $category_date = [
+                        'plastic_pallet' => 'プラスチックパレット',
+                        'wood_pallet' => '木製パレット',
+                        ];
+                        @endphp
+                        <select name='category' class='category'>
+                            @foreach ($category_date as $category_date_key => $category_date_val)
+                            <option value=$category_date_key>{{$category_date_val}}</option>";
+                            @endforeach
                         </select>
                     </td>
                 </tr>
@@ -31,15 +38,22 @@
                         サイズ
                     </td>
                     <td>
-                        <select name="specification" class="specification">
-                            <option value="no">ー</option>
-                            <option value="1100size">1000サイズ以下</option>
-                            <option value="1100size">1100サイズ</option>
-                            <option value="othersize">1200サイズ</option>
-                            <option value="othersize">1300サイズ</option>
-                            <option value="othersize">1400サイズ</option>
-                            <option value="othersize">1500サイズ以上</option>
+                        @php
+                        $size_date = [
+                        '1000size' => '1000サイズ以下',
+                        '1100size' => '1100サイズ',
+                        '1200size' => '1200サイズ',
+                        '1300size' => '1300サイズ',
+                        '1400size' => '1400サイズ',
+                        '1500size' => '1500サイズ以上'
+                        ];
+                        @endphp
+                        <select name='size' class='size'>
+                            @foreach ($size_date as $size_date_key => $size_date_val)
+                            <option value=$size_date_key>{{$size_date_val}}</option>";
+                            @endforeach
                         </select>
+
                     </td>
                 </tr>
                 <tr>
@@ -47,11 +61,18 @@
                         仕様
                     </td>
                     <td>
-                        <select name="specification" class="specification">
-                            <option value="no">ー</option>
-                            <option value="oneside">片面</option>
-                            <option value="bothsides">両面</option>
-                            <option value="mix">混在</option>
+                        @php
+                        $specification_date = [
+                        'no' => 'ー',
+                        'oneside' => '片面',
+                        'bothsides' => '両面',
+                        'mix' => '混在'
+                        ];
+                        @endphp
+                        <select name='specification' class='specification'>
+                            @foreach ($specification_date as $specification_date_key => $specification_val)
+                            <option value=$specification_date_key>{{$specification_val}}</option>";
+                            @endforeach
                         </select>
                     </td>
                 </tr>
@@ -60,22 +81,29 @@
                         置場(地方)
                     </td>
                     <td>
-                    <select name="prefectures" class="prefectures">
-                        <option value="no">ー</option>
-                        <option value="北海道">北海道</option>
-                        <option value="東北">東北</option>
-                        <option value="関東">関東</option>
-                        <option value="中部">中部</option>
-                        <option value="近畿">近畿</option>
-                        <option value="中四国">中四国</option>
-                        <option value="九州">九州</option>
-                        <option value="沖縄">沖縄</option>
+                        @php
+                        $region_date = [
+                        'no' => 'ー',
+                        '北海道' => '北海道',
+                        '東北' => '東北',
+                        '関東' => '関東',
+                        '中部' => '中部',
+                        '近畿' => '近畿',
+                        '中四国' => '中四国',
+                        '九州' => '九州',
+                        '沖縄' => '沖縄'
+                        ];
+                        @endphp
+                        <select name='region' class='region'>
+                            @foreach ($region_date as $region_date_key => $region_date_val)
+                            <option value=$region_date_key>{{$region_date_val}}</option>";
+                            @endforeach
                         </select>
                     </td>
                 </tr>
             </table>
             <br>
-            <input type="button" value="出力する">
+            <input type='button' value='出力する'>
         </form>
 
     </body>

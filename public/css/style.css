@@ -16,7 +16,12 @@ body {
     text-align: center;
 }
 
-.prefectures {
+.size {
+    font-size: 15px;
+    text-align: center;
+}
+
+.region {
     font-size: 15px;
     text-align: center;
 }
