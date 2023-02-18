@@ -12,13 +12,15 @@ class ScrapingShowController extends Controller
 
         $category_date = $this->categoryDate();
 
+        $json_array = json_encode($category_date);
+
         $size_date = $this->sizeDate();
 
         $specification_date = $this->specificationDate();
 
         $region_date = $this->regionDate();
 
-        return view('scraping.show', compact('message', 'category_date', 'size_date', 'specification_date', 'region_date'));
+        return view('scraping.show', compact('message', 'category_date', 'size_date', 'specification_date', 'region_date','json_array'));
     }
 
     public function categoryDate()
@@ -61,14 +63,14 @@ class ScrapingShowController extends Controller
     {
         $region_date = [
             'no' => 'ー',
-            '北海道' => '北海道',
-            '東北' => '東北',
-            '関東' => '関東',
-            '中部' => '中部',
-            '近畿' => '近畿',
-            '中四国' => '中四国',
-            '九州' => '九州',
-            '沖縄' => '沖縄'
+            'hokkaido' => '北海道',
+            'tohoku' => '東北',
+            'kantou' => '関東',
+            'tyubu' => '中部',
+            'kinnki' => '近畿',
+            'tyusikoku' => '中四国',
+            'kyusyu' => '九州',
+            'okinawa' => '沖縄'
         ];
 
         return $region_date;

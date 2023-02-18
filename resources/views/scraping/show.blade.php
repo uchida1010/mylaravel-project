@@ -20,11 +20,14 @@
                         カテゴリ
                     </td>
                     <td>
-                        <select name='category' class='category'>
+                        <!-- 変更箇所 start -->
+                        <select name='category' class='category' id="category" onchange="itemDel()">
+                        <!-- 変更箇所 end -->
                             @foreach ($category_date as $category_date_key => $category_date_val)
-                            <option value=$category_date_key>{{$category_date_val}}</option>";
+                            <option value='$category_date_key'>{{$category_date_val}}</option>
                             @endforeach
                         </select>
+
                     </td>
                 </tr>
                 <tr>
@@ -34,7 +37,7 @@
                     <td>
                         <select name='size' class='size'>
                             @foreach ($size_date as $size_date_key => $size_date_val)
-                            <option value=$size_date_key}}>{{$size_date_val}}</option>
+                            <option value=$size_date_key>{{$size_date_val}}</option>
                             @endforeach
                         </select>
 
@@ -45,9 +48,11 @@
                         仕様
                     </td>
                     <td>
-                        <select name='specification' class='specification'>
+                        <!-- 変更箇所 start -->
+                        <select name='specification' class='specification' id='specification'>
+                        <!-- 変更箇所 end -->
                             @foreach ($specification_date as $specification_date_key => $specification_val)
-                            <option value=$specification_date_key>{{$specification_val}}</option>";
+                            <option value=$specification_date_key>{{$specification_val}}</option>
                             @endforeach
                         </select>
                     </td>
@@ -59,7 +64,7 @@
                     <td>
                         <select name='region' class='region'>
                             @foreach ($region_date as $region_date_key => $region_date_val)
-                            <option value=$region_date_key>{{$region_date_val}}</option>";
+                            <option value=$region_date_key>{{$region_date_val}}</option>
                             @endforeach
                         </select>
                     </td>
@@ -68,7 +73,7 @@
             <br>
             <input type='button' value='出力する'>
         </form>
-
+        <script src="js/scraping.js"></script>
     </body>
 
 </html.>
