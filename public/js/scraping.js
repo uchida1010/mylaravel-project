@@ -1,12 +1,10 @@
+const category = document.getElementById('category');
+const specification = document.getElementById('specification');
 
-
-function itemDel() {
-        
-    const category = document.getElementById( "category" ) ;
-    const specification = document.getElementById( "specification" ).value;
-    
-    if(category.textContent === "木製パレット") {
-        specification.style.display="none";
-    }
-    alert(category.textContent);
-}
+category.addEventListener('change', (event) => {
+   if(category.value === 'woodenpallet') {
+    specification.style.display = 'none';
+   }else{
+    specification.style.display = '';
+   }
+});
