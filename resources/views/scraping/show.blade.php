@@ -13,7 +13,7 @@
         <h2>
             {{ $message }}
         </h2>
-        <form action='#' method='post'>
+        <form action="#" method="post">
             <table>
                 <tr>
                     <td>
@@ -22,9 +22,7 @@
                     <td>
                         <select name='category' class='category' id="category">
                             @foreach ($category_date as $category_date_key => $category_date_val)
-                             <!-- 変更箇所 start -->
                             <option value='{{$category_date_key}}'>{{$category_date_val}}</option>
-                             <!-- 変更箇所 end -->
                             @endforeach
                         </select>
 
@@ -37,26 +35,22 @@
                     <td>
                         <select name='size' class='size'>
                             @foreach ($size_date as $size_date_key => $size_date_val)
-                            <!-- 変更箇所 start -->
                             <option value='{{$size_date_key}}'>{{$size_date_val}}</option>
-                            <!-- 変更箇所 end -->
                             @endforeach
                         </select>
 
                     </td>
                 </tr>
-                <!-- 変更箇所 start -->
                 <tr id='specification'>
-                <!-- 変更箇所 end -->
                     <td>
                         仕様
                     </td>
                     <td>
-                        <select name='specification' class='specification'>
+                        <!-- 変更箇所 start -->
+                        <select name='specification' class='specification' id='specification_sel'>
+                        <!-- 変更箇所 end -->
                             @foreach ($specification_date as $specification_date_key => $specification_val)
-                            <!-- 変更箇所 start -->
                             <option value={{$specification_date_key}}>{{$specification_val}}</option>
-                            <!-- 変更箇所 end -->
                             @endforeach
                         </select>
                     </td>
@@ -68,9 +62,7 @@
                     <td>
                         <select name='region' class='region'>
                             @foreach ($region_date as $region_date_key => $region_date_val)
-                            <!-- 変更箇所 start -->
                             <option value='{{$region_date_key}}'>{{$region_date_val}}</option>
-                             <!-- 変更箇所 end -->
                             @endforeach
                         </select>
                     </td>
