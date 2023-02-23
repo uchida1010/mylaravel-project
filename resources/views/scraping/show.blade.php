@@ -13,7 +13,8 @@
         <h2>
             {{ $message }}
         </h2>
-        <form action="#" method="post">
+        <form method="post" action="/scraping">
+            @csrf
             <table>
                 <tr>
                     <td>
@@ -46,9 +47,7 @@
                         仕様
                     </td>
                     <td>
-                        <!-- 変更箇所 start -->
                         <select name='specification' class='specification' id='specification_sel'>
-                        <!-- 変更箇所 end -->
                             @foreach ($specification_date as $specification_date_key => $specification_val)
                             <option value={{$specification_date_key}}>{{$specification_val}}</option>
                             @endforeach
@@ -69,7 +68,7 @@
                 </tr>
             </table>
             <br>
-            <input type='button' value='出力する'>
+            <input type='submit' value='出力する'>
         </form>
         <script src="js/scraping.js"></script>
     </body>

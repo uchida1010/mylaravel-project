@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScrapingShowController;
+use App\Http\Controllers\ScrapingExecuteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('scraping', [ScrapingShowController::class, 'show']);
+
+Route::post('scraping', [ScrapingExecuteController::class, 'show']);
+
+
