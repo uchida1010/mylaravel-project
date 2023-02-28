@@ -21,6 +21,6 @@ Route::get('/', function () {
 
 Route::get('scraping', [ScrapingShowController::class, 'show']);
 
-Route::get('execute', function() {return redirect()->action([ScrapingExecuteController::class, 'execute']); });
+Route::get('execute', [ScrapingExecuteController::class, 'execute']);
 
 
