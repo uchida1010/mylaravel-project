@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScrapingShowController;
 use App\Http\Controllers\ScrapingExecuteController;
-
+use Illuminate\Http\RedirectResponse;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +21,6 @@ Route::get('/', function () {
 
 Route::get('scraping', [ScrapingShowController::class, 'show']);
 
-Route::post('scraping', [ScrapingExecuteController::class, 'show']);
+Route::get('execute', function() {return redirect()->action([ScrapingExecuteController::class, 'execute']); });
 
 

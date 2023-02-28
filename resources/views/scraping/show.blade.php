@@ -13,7 +13,7 @@
         <h2>
             {{ $message }}
         </h2>
-        <form method="post" action="/scraping">
+        <form method="get" action="/execute">
             @csrf
             <table>
                 <tr>
