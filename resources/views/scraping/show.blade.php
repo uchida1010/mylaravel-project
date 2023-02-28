@@ -13,7 +13,7 @@
         <h2>
             {{ $message }}
         </h2>
-        <form method="get" action="/execute">
+        <form method="post" action="/execute">
             @csrf
             <table>
                 <tr>

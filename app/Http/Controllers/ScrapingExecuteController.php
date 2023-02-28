@@ -9,6 +9,6 @@ class ScrapingExecuteController extends Controller
 {
   public function execute()
   {
-    return redirect('http://localhost:8000/scraping ');
+    return redirect('scraping');
   }
 }
