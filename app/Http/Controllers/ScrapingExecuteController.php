@@ -6,28 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-// use PHPHtmlParser\Dom;
-use App\Sites\O_Site;
-use App\Sites\Reuse_Site;
-use App\Sites\Sell_Site;
+use App\Sites\OSite;
+use App\Sites\ReuseSite;
+use App\Sites\SellSite;
 
 class ScrapingExecuteController extends Controller
 {
   public function execute()
   {
-    $o_html = new O_Site('https://www.pallet-o.com/');
-    $reuse_html = new Reuse_Site('https://www.reuse-pallet.com/');
-    $sell_html = new Sell_Site('https://sell.uppc.jp/');
-
-    // $dom = new Dom;
-    // $dom->loadFromUrl('https://www.pallet-o.com/');
-    // $o_html = $dom->outerHtml;
-
-    // $dom->loadFromUrl('https://www.reuse-pallet.com/');
-    // $reuse_html = $dom->outerHtml;
-
-    // $dom->loadFromUrl('https://sell.uppc.jp/');
-    // $sell_html = $dom->outerHtml;
+    $o_html = new OSite('https://www.pallet-o.com/');
+    $reuse_html = new ReuseSite('https://www.reuse-pallet.com/');
+    $sell_html = new SellSite('https://sell.uppc.jp/');
 
     // Spreadsheetオブジェクト生成
     $objSpreadsheet = new Spreadsheet();
@@ -35,9 +24,9 @@ class ScrapingExecuteController extends Controller
     $objSheet = $objSpreadsheet->getActiveSheet();
 
     //セルに文字列設定
-    $objSheet->setCellValue('A1', $o_html);
-    $objSheet->setCellValue('A2', $reuse_html);
-    $objSheet->setCellValue('A3', $sell_html);
+    $objSheet->setCellValue('A1', $o_html->oSite());
+    $objSheet->setCellValue('A2', $reuse_html->reuseSite());
+    $objSheet->setCellValue('A3', $sell_html->sellSite());
 
 
     // ブラウザへの指定
