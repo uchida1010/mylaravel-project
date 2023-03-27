@@ -9,11 +9,6 @@ class Site
   protected $url;
   protected $html;
 
-  public function __construct($url)
-  {
-    $this->url = $url;
-  }
-
   public function setOuterHtml()
   {
     $dom = new Dom;
