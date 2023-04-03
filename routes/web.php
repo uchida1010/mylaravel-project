@@ -21,8 +21,6 @@ Route::get('/', function () {
 
 Route::get('scraping', [ScrapingShowController::class, 'show']);
 
-Route::get('/validation/execute', [ScrapingExecuteController::class, 'execute']);
-
-Route::post('/validation', [ScrapingExecuteController::class, 'scrapingVal']);
+Route::post('/execute', [ScrapingExecuteController::class, 'scrapingVal']);
 
 

@@ -20,7 +20,7 @@
             @endforeach
     </div>
 @endif
-        <form method="post" action="/validation">
+        <form method="post" action="/execute">
             @csrf
             <table>
                 <tr>
