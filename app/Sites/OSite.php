@@ -20,15 +20,15 @@ class OSite extends Site
   {
     if ($this->category === 'plasticpallet') {
       $parameter = [
-        'p' => 'プラスチックパレット'
+        'q' => 'プラスチックパレット'
       ];
     } elseif ($this->category === 'woodenpallet') {
       $parameter = [
-        'p' => '木製パレット'
+        'q' => '木製パレット'
       ];
     }
 
-    $parameter = http_build_query($parameter) . "\n";
+    $parameter = http_build_query($parameter);
 
     $this->url = $this->url . $parameter;
 

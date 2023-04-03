@@ -13,7 +13,14 @@
         <h2>
             {{ $message }}
         </h2>
-        <form method="post" action="/execute">
+        @if ($errors->any())
+    <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach
+    </div>
+@endif
+        <form method="post" action="/validation">
             @csrf
             <table>
                 <tr>
