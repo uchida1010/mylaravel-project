@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use \App\Http\Requests\ScrapingExecuteRequest;
 use Illuminate\Http\RedirectResponse;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -10,20 +10,19 @@ use App\Sites\OSite;
 use App\Sites\ReuseSite;
 use App\Sites\SellSite;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 
 class ScrapingExecuteController extends Controller
 {
-      /**
-     * 新ブログポスト作成フォームの表示
-     *
-     * @return \Illuminate\View\View
-     */
 
-  public function execute($category, $size, $specification, $region)
+  public function execute(ScrapingExecuteRequest $request)
   {
-    $o_html = new OSite($category, $size, $specification, $region);
-    $reuse_html = new ReuseSite($category, $size, $specification, $region);
-    $sell_html = new SellSite($category, $size, $specification, $region);
+
+    $validated = $request->validated();
+
+    $o_html = new OSite($validated['category'], $validated['size'], $validated['specification'], $validated['region']);
+    $reuse_html = new ReuseSite($validated['category'], $validated['size'], $validated['specification'], $validated['region']);
+    $sell_html = new SellSite($validated['category'], $validated['size'], $validated['specification'], $validated['region']);
 
     // Spreadsheetオブジェクト生成
     $objSpreadsheet = new Spreadsheet();
@@ -47,40 +46,4 @@ class ScrapingExecuteController extends Controller
 
     return redirect('scraping');
   }
-
-     /**
-     * 新しいブログポストの保存
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-  public function scrapingVal(Request $request)
-  {
-    $category = $request->category;
-    $size = $request->size;
-    $specification = $request->specification;
-    $region = $request->region;
-
-       $request->validate(
-      [
-        'category' => 'required|alpha:ascii|string',
-        'size' => 'required|alpha_num:ascii|string',
-        'specification' => 'required|alpha:ascii|string',
-        'region' => 'required|alpha:ascii|string'
-      ],
-      [
-        'category.required.string' => 'カテゴリを正しく選択してください',
-        'category.alpha' => 'カテゴリを正しく選択してください',
-        'size.required' => 'サイズを正しく選択してください',
-        'size.alpha_num' => 'サイズを正しく選択してください',
-        'specification.required' => '仕様を正しく選択してください',
-        'specification.alpha' => '仕様を正しく選択してください',
-        'region.required' => '置き場を正しく選択してください',
-        'region.alpha' => '置き場を正しく選択してください'
-      ]
-    );
-
-    return $this->execute($category, $size, $specification, $region);
-    }
-  }
+}

@@ -4,12 +4,18 @@ namespace App\Sites;
 
 use App\Sites\Site;
 use Illuminate\Http\Request;
-
+use \App\Http\Requests\ScrapingExecuteRequest;
 class OSite extends Site
 {
+  protected $url;
+  protected $category;
+  protected $size;
+  protected $specification;
+  protected  $region;
+
+
   public function __construct($category, $size, $specification, $region)
   {
-    $this->url = 'https://pallet-o.com/search?';
     $this->category = $category;
     $this->size = $size;
     $this->specification = $specification;
@@ -18,6 +24,8 @@ class OSite extends Site
 
   public function oSite()
   {
+    $this->url = 'https://pallet-o.com/search?';
+
     if ($this->category === 'plasticpallet') {
       $parameter = [
         'q' => 'プラスチックパレット'

@@ -6,9 +6,14 @@ use App\Sites\Site;
 
 class SellSite extends Site
 {
+  protected $url;
+  protected $category;
+  protected $size;
+  protected $specification;
+  protected  $region;
+
   public function __construct($category, $size, $specification, $region)
   {
-    $this->url = 'https://sell.uppc.jp/?';
     $this->category = $category;
     $this->size = $size;
     $this->specification = $specification;
@@ -17,6 +22,8 @@ class SellSite extends Site
 
   public function sellSite()
   {
+    $this->url = 'https://sell.uppc.jp/?';
+    
     if ($this->category === 'plasticpallet') {
       $parameter = [
         's' => 'プラスチックパレット'

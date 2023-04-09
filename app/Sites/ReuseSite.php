@@ -6,10 +6,15 @@ use App\Sites\Site;
 
 class ReuseSite extends Site
 {
-
+  protected $url;
+  protected $category;
+  protected $size;
+  protected $specification;
+  protected  $region;
+  
   public function __construct($category, $size, $specification, $region)
   {
-    $this->url = 'https://www.reuse-pallet.com/products/list?';
+    
     $this->category = $category;
     $this->size = $size;
     $this->specification = $specification;
@@ -18,6 +23,8 @@ class ReuseSite extends Site
 
   public function reuseSite()
   {
+    $this->url = 'https://www.reuse-pallet.com/products/list?';
+
     if ($this->category === 'plasticpallet') {
       $parameter = [
         'category_id' => '',
