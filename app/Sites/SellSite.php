@@ -6,7 +6,7 @@ use App\Sites\Site;
 
 class SellSite extends Site
 {
-  protected $url;
+  protected $url = 'https://sell.uppc.jp/?';
   protected $category;
   protected $size;
   protected $specification;
@@ -22,17 +22,11 @@ class SellSite extends Site
 
   public function sellSite()
   {
-    $this->url = 'https://sell.uppc.jp/?';
-    
-    if ($this->category === 'plasticpallet') {
-      $parameter = [
-        's' => 'プラスチックパレット'
-      ];
-    } elseif ($this->category === 'woodenpallet') {
-      $parameter = [
-        's' => '木製パレット'
-      ];
-    }
+
+    $parameter =
+    [
+      'q' => $this->category
+    ];
 
     $parameter = http_build_query($parameter);
 

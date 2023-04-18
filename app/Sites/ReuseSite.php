@@ -6,7 +6,7 @@ use App\Sites\Site;
 
 class ReuseSite extends Site
 {
-  protected $url;
+  protected $url = 'https://www.reuse-pallet.com/products/list?';
   protected $category;
   protected $size;
   protected $specification;
@@ -23,19 +23,11 @@ class ReuseSite extends Site
 
   public function reuseSite()
   {
-    $this->url = 'https://www.reuse-pallet.com/products/list?';
 
-    if ($this->category === 'plasticpallet') {
-      $parameter = [
-        'category_id' => '',
-        'name' => 'プラスチックパレット'
-      ];
-    } elseif ($this->category === 'woodenpallet') {
-      $parameter = [
-        'category_id' => '',
-        'name' => '木製パレット'
-      ];
-    }
+    $parameter =
+    [
+      'q' => $this->category
+    ];
 
     $parameter = http_build_query($parameter);
 

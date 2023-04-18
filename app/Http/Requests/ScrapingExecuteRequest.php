@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ScrapingExecuteRequest extends FormRequest
 {
@@ -16,7 +17,7 @@ class ScrapingExecuteRequest extends FormRequest
         return true;
     }
 
-    /**
+    /**d
      * Get the validation rules that apply to the request.
      *
      * @return array<string, mixed>
@@ -24,10 +25,10 @@ class ScrapingExecuteRequest extends FormRequest
     public function rules()
     {
         return [
-            'category' => 'required|alpha:ascii|string',
-            'size' => 'required|alpha_num:ascii|string',
-            'specification' => 'required|alpha:ascii|string',
-            'region' => 'required|alpha:ascii|string'
+            'category' => ['required', Rule::in(['プラスチックパレット', '木製パレット'])],
+            'size' => ['required', Rule::in(['1000サイズ以下', '1100サイズ','1200サイズ','1300サイズ','1400サイズ','1500サイズ以上'])],
+            'specification' => ['required', Rule::in(['ー', '片面','両面','混在'])],
+            'region' => ['required', Rule::in(['ー', '北海道','東北','関東', '中部','近畿','中四国','九州','沖縄'])]
           ];
     }
 
@@ -40,14 +41,10 @@ public function messages()
 {
     return 
           [
-            'category.required' => 'カテゴリを正しく選択してください',
-            'category.alpha' => 'カテゴリを正しく選択してください',
-            'size.required' => 'サイズを正しく選択してください',
-            'size.alpha_num' => 'サイズを正しく選択してください',
-            'specification.required' => '仕様を正しく選択してください',
-            'specification.alpha' => '仕様を正しく選択してください',
-            'region.required' => '置き場を正しく選択してください',
-            'region.alpha' => '置き場を正しく選択してください'
+            'category' => 'カテゴリを正しく選択してください',
+            'size' => 'サイズを正しく選択してください',
+            'specification' => '仕様を正しく選択してください',
+            'region' => '置き場を正しく選択してください',
           ];
 }
 }

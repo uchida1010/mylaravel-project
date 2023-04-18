@@ -5,9 +5,10 @@ namespace App\Sites;
 use App\Sites\Site;
 use Illuminate\Http\Request;
 use \App\Http\Requests\ScrapingExecuteRequest;
+
 class OSite extends Site
 {
-  protected $url;
+  protected $url = 'https://pallet-o.com/search?';
   protected $category;
   protected $size;
   protected $specification;
@@ -24,17 +25,11 @@ class OSite extends Site
 
   public function oSite()
   {
-    $this->url = 'https://pallet-o.com/search?';
 
-    if ($this->category === 'plasticpallet') {
-      $parameter = [
-        'q' => 'プラスチックパレット'
+    $parameter =
+      [
+        'q' => $this->category
       ];
-    } elseif ($this->category === 'woodenpallet') {
-      $parameter = [
-        'q' => '木製パレット'
-      ];
-    }
 
     $parameter = http_build_query($parameter);
 
