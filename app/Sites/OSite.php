@@ -5,6 +5,7 @@ namespace App\Sites;
 use App\Sites\Site;
 use Illuminate\Http\Request;
 use \App\Http\Requests\ScrapingExecuteRequest;
+use PHPHtmlParser\Dom;
 
 class OSite extends Site
 {
@@ -13,6 +14,7 @@ class OSite extends Site
   protected $size;
   protected $specification;
   protected  $region;
+  protected  $test;
 
 
   public function __construct($category, $size, $specification, $region)
@@ -34,7 +36,10 @@ class OSite extends Site
     $parameter = http_build_query($parameter);
 
     $this->url = $this->url . $parameter;
+    $this->test = $this->setOuterHtml(); 
 
-    return $this->setOuterHtml();
-  }
+    $this->test = $this->test->find('h1', 0); 
+    return $this->test;
+
+    }
 }

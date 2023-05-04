@@ -31,8 +31,8 @@ class ScrapingExecuteController extends Controller
 
     //セルに文字列設定
     $objSheet->setCellValue('A1', $o_html->oSite());
-    $objSheet->setCellValue('A2', $reuse_html->reuseSite());
-    $objSheet->setCellValue('A3', $sell_html->sellSite());
+    // $objSheet->setCellValue('A2', $reuse_html->reuseSite());
+    // $objSheet->setCellValue('A3', $sell_html->sellSite());
 
 
     // ブラウザへの指定
